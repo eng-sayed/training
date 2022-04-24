@@ -4,6 +4,7 @@ import 'package:providerexample/controller/store_controller.dart';
 import 'package:providerexample/dio_helper/dio_helper.dart';
 import 'package:providerexample/provider.dart';
 import 'package:providerexample/screens/products_screen.dart';
+import 'package:providerexample/screens/testScreen.dart';
 
 import 'dio.dart';
 
@@ -42,14 +43,16 @@ class MyApp extends StatelessWidget {
           // is not restarted.
           primarySwatch: Colors.blue,
         ),
-        home: const ProductScreen(),
+        home: ProductScreen(),
       ),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
+  MyHomePage({
+    Key? key,
+  }) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -60,7 +63,7 @@ class MyHomePage extends StatefulWidget {
   // used by the build method of the State. Fields in a Widget subclass are
   // always marked "final".
 
-  final String title;
+  String title = 'k';
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -107,8 +110,12 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Provider.of<AppProvider>(context, listen: false).increament();
-          Provider.of<AppProvider>(context, listen: false).getAllNews();
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const ProductScreen()),
+          );
+          // // Provider.of<AppProvider>(context, listen: false).increament();
+          // Provider.of<AppProvider>(context, listen: false).getAllNews();
         },
         tooltip: 'Increment',
         child: const Icon(Icons.add),
